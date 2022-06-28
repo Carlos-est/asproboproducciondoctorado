@@ -1,0 +1,194 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Page User {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/assets/css/templatemo.css">
+<link rel="stylesheet" href="/static/assets/css/custom.css">
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="carousel slide">
+  <div class="card" style="background-color: rgb(238, 238, 238);">
+    <br>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="container">
+          <a href="/viewFormPackingList"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+        </div>
+        
+        <div class="card card-body">
+          <form action="/updatePackingList/{{dataPackingList.0}}" method="POST">
+            <div class="form-group">
+              <div class="card-header">
+                {{form.fechaRegistro.label(class='bmd-label-floating')}} {{form.fechaRegistro(class='datepicker')}}
+                {{form.hidden_tag()}}
+                {%for error in form.fechaRegistro.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group">
+              <!-- Hora de llegada
+          <input type="text" name="horaLlegada" placeholder="Hora de llegada" value ="{{dataPackingList.1}}"  id="" class="form-control">  -->
+              <div class="card-header">
+                {{form.horaLlegada.label(class='bmd-label-floating')}}
+
+                {{form.horaLlegada(class='timepicker')}} {{form.hidden_tag()}}
+                {%for error in form.horaLlegada.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="card-header">
+                <!-- Inicio de Llenado
+          <input type="text" name="inicioLlenado" placeholder="Inicio de llenado" value ="{{dataPackingList.2}}" id="" class="form-control"> -->
+                {{form.inicioLlenado.label(class='bmd-label-floating')}} {{form.inicioLlenado(class='timepicker')}}
+                {{form.hidden_tag()}}
+                {%for error in form.inicioLlenado.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group">
+              <!-- Hora de Salida
+          <input type="text" name="horaSalida" placeholder="Hora de salida" value ="{{dataPackingList.3}}" id="" class="form-control">
+         -->
+              <div class="card-header">
+                {{form.horaSalida.label(class='bmd-label-floating')}} {{form.horaSalida(class='timepicker')}}
+                {{form.hidden_tag()}}
+                {%for error in form.horaSalida.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="card-header">
+                <!-- Número de contenedor
+          <input type="text" name="nroContenedor" placeholder="Número de contenedor" value ="{{dataPackingList.4}}" id="" class="form-control">
+        -->
+
+                {{form.nroSemana.label(class='bmd-label-floating')}} {{form.nroSemana(class="form-control")}}
+                {%for error in form.nroSemana.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="card-header">
+                <!-- Número de contenedor
+          <input type="text" name="nroContenedor" placeholder="Número de contenedor" value ="{{dataPackingList.4}}" id="" class="form-control">
+        -->
+
+                {{form.nroContenedor.label(class='bmd-label-floating')}} {{form.nroContenedor(class="form-control")}}
+                {%for error in form.nroContenedor.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="card-header">
+                <!-- Nave
+          <input type="text" name="nave" placeholder="Nave" value ="{{dataPackingList.5}}" id="" class="form-control">
+         -->
+
+                {{form.nave.label(class='bmd-label-floating')}} {{form.nave(class="form-control")}}
+                {%for error in form.nave.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="card-header">
+                <!-- Nave
+          <input type="text" name="nave" placeholder="Nave" id="" class="form-control"> -->
+                {{form.pLinea.label(class='bmd-label-floating')}} {{form.pLinea(class="form-control")}}
+                {%for error in form.pLinea.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="card-header">
+                <!-- Nave
+          <input type="text" name="nave" placeholder="Nave" id="" class="form-control"> -->
+                {{form.pAduana.label(class='bmd-label-floating')}} {{form.pAduana(class="form-control")}}
+                {%for error in form.pAduana.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+              </div>
+            </div>
+
+
+            <!-- <div class="form-group"> Marca
+          <input type="text" name="marca" placeholder="Marca" id="" class="form-control">
+        </div> -->
+
+            <!-- {% for x in dataMarca %}
+        <option value="{{ x }}">{{ x }}</option>
+        {% endfor %} -->
+
+            <div class="form-group">
+              <div class="card-header">
+                Empacadora
+                <select id="cmbEmpacadora" name="cmbEmpacadora" class="form-control">
+                  <option value="1">ASPROBO</option>
+
+                </select>
+              </div>
+            </div>
+
+            <!-- <div class="form-group"> Marca
+          <select id="" name="cmbMarca" class="form-control">
+            <option value=''>Seleccione</option>
+
+            {% for x in dataMarca %}
+            <option value="{{ x.id }}">{{ x.descripcion }}</option>
+            {% endfor %}
+          </select>
+        </div> -->
+
+            <div class="form-group">
+              <div class="card-header">
+                Marca
+                <select id="cmbMarca" name="cmbMarca" class="form-control">
+                  <option value="1">AMPRO</option>
+                  <option value="2">IREN</option>
+                  <option value="3">IREN FRUITS</option>
+
+                </select>
+              </div>
+            </div>
+
+            <script>
+              document.ready = document.getElementById("cmbEmpacadora").value = {{ dataPackingList.8 | safe }};
+              document.ready = document.getElementById("cmbMarca").value = {{ dataPackingList.9 | safe }};
+            </script>
+
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-block btn-success w-100">Actualizar registro</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+
+{% endblock javascripts %}

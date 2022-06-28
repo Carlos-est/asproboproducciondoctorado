@@ -1,0 +1,171 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Page User {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+<!-- IMPORTANTE: CUANDO SE ENVIA INFORMACION DE POR POST SE PONE UN SLASH ADELANTE DE CADA RUTA -->
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/assets/css/templatemo.css">
+<link rel="stylesheet" href="/static/assets/css/custom.css">
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="carousel slide">
+  <div class="card" style="background-color: rgb(238, 238, 238);">
+    <br>
+    <br>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="container">
+          <a href="/verDetallePackingList/{{valorId}}"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <div class="card card-body">
+
+          <form action="/updatePackingListDetalle/{{dataPackingListDetalle.0}}" method="POST">
+            <!-- <div class="form-group"> Pallets
+          <input type="text" name="pallet" placeholder="Número del pallet" id="txtPallet" class="form-control" disabled="true" >
+          <input type="hidden" name="txtPalletForm" id="txtPalletForm" >
+
+        </div> -->
+
+            <div class="form-group"> Pallets
+              <div class="card-header">
+                <select id="cmbPallet" name="cmbPallet" class="form-control">
+                  <option value="1">Pallet 1</option>
+                  <option value="2">Pallet 2</option>
+                  <option value="3">Pallet 3</option>
+                  <option value="4">Pallet 4</option>
+                  <option value="5">Pallet 5</option>
+                  <option value="6">Pallet 6</option>
+                  <option value="7">Pallet 7</option>
+                  <option value="8">Pallet 8</option>
+                  <option value="9">Pallet 9</option>
+                  <option value="10">Pallet 10</option>
+                  <option value="11">Pallet 11</option>
+                  <option value="12">Pallet 12</option>
+                  <option value="13">Pallet 13</option>
+                  <option value="14">Pallet 14</option>
+                  <option value="15">Pallet 15</option>
+                  <option value="16">Pallet 16</option>
+                  <option value="17">Pallet 17</option>
+                  <option value="18">Pallet 18</option>
+                  <option value="19">Pallet 19</option>
+                  <option value="20">Pallet 20</option>
+
+
+
+
+                </select>
+              </div>
+            </div>
+
+
+
+            <div class="form-group">
+              <div class="card-header">
+                {{form.fechaCorte.label(class='bmd-label-floating')}}<br> {{form.fechaCorte(class='datepicker')}}
+                {{form.hidden_tag()}}
+                {%for error in form.fechaCorte.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+              </div>
+            </div>
+
+
+            <div class="form-group"> Productor
+              <div class="card-header">
+                <select id="cmbProductor" name="cmbProductor" class="form-control">
+                  <option value="1">MAXIMO LOPEZ ROJAS - BA 01</option>
+                  <option value="2">SANTOS NORIEGA ROMAN - BA 02</option>
+                  <option value="3">ANDRES NORIEGA ROMAN - BA 03</option>
+                  <option value="4">PABLO CALLE CHAMBIO - BA 04</option>
+                  <option value="5">ANDRES SANCHEZ CARLIN - BA 07</option>
+                  <option value="6">EVER MENA PALACIOS - BA 17</option>
+                  <option value="30">EVER MENA PALACIOS - BA 49</option>
+                  <option value="7">JOSE SANTOS GIRON VELASQUEZ - BA 18</option>
+                  <option value="8">PABLO ALBERTO AGUIRRE ALVARADO - BA 26</option>
+                  <option value="9">SEGUNDO MIGUEL MENA PALACIOS - BA 27</option>
+                  <option value="10">MANUEL MONCADA PACHERRE - BA 28</option>
+                  <option value="11">DANI DANIEL JARAMILLO AGURTO - BA 32</option>
+                  <option value="12">EDSON BENITES RUIZ - BA 35</option>
+                  <option value="13">ROLANDO JAVIER LEITON ALVARADO - BA 37</option>
+                  <option value="14">LORGIO MENA PALACIOS - BA 39</option>
+                  <option value="15">MIGUEL EDUARDO CERVERA MONCADA - BA 40</option>
+                  <option value="16">IRMA LOPEZ ROJAS - BA 45</option>
+                  <option value="17">GOSVINDA LOPEZ ROJAS - BA 46</option>
+                  <option value="18">JORGE LUIS VALDIVIEZO CHEVEZ - BA 47</option>
+                  <option value="19">TERESITA DEL JESUS ATOCHE DOMINGUEZ - BA 50</option>
+                  <option value="20">SABINO CHICOMA MARCHENA - BA 51</option>
+                  <option value="21">JOSE SANTOS JIMENEZ BERRU - BA 57</option>
+                  <option value="22">PEDRO MENA NORIEGA - BA 58</option>
+                  <option value="23">HUMBERTO ENCALADA CORONADO - BA 59</option>
+                  <option value="24">CARLOS MANUEL ALVARADO PALACIOS - BA 60</option>
+                  <option value="25">JOSE FRANCISCO TIRADO CHEVEZ - BA 62</option>
+                  <option value="26">LUCIANO GALLARDO ADRIANZEN - BA 61</option>
+                  <option value="27">EDWIN CHINGUEL FLORES - ----</option>
+                  <option value="28">FERNANDO AUGUSTO CHEVEZ VERONA - ---- </option>
+                  <option value="29">JULIO CESAR PALOMINO - ---- </option>
+                  <option value="30">CARLOS MONCADA RUIZ - ---- </option>
+                  <option value="33">ISIDRO VALDIVIEZO CRISANTO - ---- </option>
+                  <option value="34">JARLY MENA NORIEGA - ---- </option>
+                  <option value="35">PARCEMON CORDOVA RAMOS - ---- </option>
+                  <option value="37">JOSE SANTOS GIRON VELASQUEZ - BA 73 </option>
+
+
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="card-header">
+                {{form.nroCajas.label(class='bmd-label-floating')}} {{form.nroCajas(class="form-control")}}
+                {%for error in form.nroCajas.errors %}
+                <span style="color: red;">{{error}}</span>
+                {% endfor %}
+
+              </div>
+            </div>
+
+            <div class="form-group"> Tipo de caja
+              <div class="card-header">
+                <select id="cmbTipoCaja" name="cmbTipoCaja" class="form-control">
+                  <option value="1">NATUR ORGANIC</option>
+                  <option value="2">FAIR</option>
+                  <option value="3">22 CLOSTER</option>
+                  <option value="4">NATUR FAIRTRADE</option>
+                  <option value="5">CARREFOUR</option>
+                  <option value="6">GUTBIO</option>
+                </select>
+              </div>
+            </div>
+
+            <script>
+              console.log("mensaje2");
+              console.log({{ dataPackingListDetalle.3| safe }});
+              document.ready = document.getElementById("cmbPallet").value = {{ dataPackingListDetalle.3 | safe }};
+              document.ready = document.getElementById("cmbProductor").value = {{ dataPackingListDetalle.6 | safe }};
+              document.ready = document.getElementById("cmbTipoCaja").value = {{ dataPackingListDetalle.7 | safe }};
+              console.log({{valorId| safe}} );
+            </script>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-block btn-success w-100">Actualizar este detalle</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
